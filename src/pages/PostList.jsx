@@ -27,7 +27,7 @@ export const PostList = ({ setToken, token }) => {
   return (
     <>
       <div className="page-title">All Posts</div>
-      <button className="btn-div" onClick={() => navigate("/create-post")}>
+      <button className="new-btn-div" onClick={() => navigate("/create-post")}>
         NEW POST
       </button>
       <div>
@@ -37,12 +37,20 @@ export const PostList = ({ setToken, token }) => {
               <Link to={`/postLists/${post.id}`}>
                 <div className="post-details">
                   <div className="post-header">
+                    <div className="post-author">
+                      Author: {post.pickle_user.user.username}
+                    </div>
                     <div className="post-title">Title: {post.title}</div>
                     <div className="post-date">
                       Date: {post.publication_date}
                     </div>
-                    <div className="post-author">
-                      Author: {post.pickle_user.user.username}
+                  </div>
+                  <div className="content">
+                    <div className="post-content">{post.content}</div>
+                    <div className="post-image">
+                      {post.image_url && (
+                        <img src={post.image_url} alt={`Image for post ${post.id}`} />
+                      )}
                     </div>
                   </div>
                   <div className="post-footer">

@@ -7,6 +7,7 @@ import { PostList } from "../pages/PostList";
 import { CourtList } from "../pages/CourtList";
 import { Profile } from "../pages/Profile";
 import { PostForm } from "../forms/NewPostFrom";
+import { CourtForm } from "../forms/newCourtForm";
 
 export const ApplicationViews = ({ token, setToken }) => {
   return (
@@ -20,6 +21,7 @@ export const ApplicationViews = ({ token, setToken }) => {
           <Route path="/posts" element={<PostList token={token} setToken={setToken} />}/>
           <Route path="/posts/create-post" element={<PostForm token={token} setToken={setToken} />}/>
           <Route path="/courts" element={<CourtList token={token} setToken={setToken} />}/>
+          <Route path="/courts/create-court" element={<CourtForm token={token} setToken={setToken} />}/>
           <Route path="/profile" element={<Profile token={token} setToken={setToken} />}/>
          
         </Route>

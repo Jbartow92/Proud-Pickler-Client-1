@@ -34,7 +34,7 @@ export const PostList = ({ setToken, token }) => {
         {posts && posts.length ? (
           posts.map((post) => (
             <div className="card-item" key={post.id}>
-              <Link to={`/postLists/${post.id}`}>
+              <Link to={`/posts/${post.id}`}>
                 <div className="post-details">
                   <div className="post-header">
                     <div className="post-author">
@@ -72,13 +72,13 @@ export const PostList = ({ setToken, token }) => {
               </Link>
                     {post?.is_owner ? (
                       <div className="manage-tags-div">
-                        {/* <button
+                        <button
                           onClick={() =>
-                            navigate(`/postList/${post.id}/edit-post`)
+                            navigate(`/posts/${post.id}/edit-post`)
                           }
                         >
                           Edit
-                        </button> */}
+                        </button>
                       </div>
                     ) : (
                       ""

@@ -24,7 +24,7 @@ export const CourtList = ({ setToken, token }) => {
   return (
     <>
       <div className="page-title">Courts</div>
-      <button className="new-btn-div" onClick={() => navigate("/create-court")}>
+      <button className="new-btn-div" onClick={() => navigate("/courts/create-court")}>
         ADD NEW COURT
       </button>
         {courts && courts.length ? (
@@ -39,11 +39,11 @@ export const CourtList = ({ setToken, token }) => {
                 <div className="card-label">{court.state}</div>
                 <div className="card-label">{court.number_of_courts}</div>
                 <div className="card-label">{court.open_hours}</div>
-                <div className="cat-btn-div">
+                {/* <div className="cat-btn-div">
                   <button onClick={() => handleUpdate(court.id)}>
                     Edit
                   </button>
-                </div>
+                </div> */}
               </div>
             ))
         ) : (

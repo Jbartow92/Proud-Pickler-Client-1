@@ -24,7 +24,7 @@ export const CourtList = ({ setToken, token }) => {
   return (
     <>
       <div className="page-title">Courts</div>
-      <button className="btn-div" onClick={() => navigate("/create-court")}>
+      <button className="new-btn-div" onClick={() => navigate("/create-court")}>
         ADD NEW COURT
       </button>
         {courts && courts.length ? (

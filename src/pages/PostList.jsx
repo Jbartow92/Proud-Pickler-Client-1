@@ -27,7 +27,7 @@ export const PostList = ({ setToken, token }) => {
   return (
     <>
       <div className="page-title">All Posts</div>
-      <button className="new-btn-div" onClick={() => navigate("/create-post")}>
+      <button className="new-btn-div" onClick={() => navigate("/posts/create-post")}>
         NEW POST
       </button>
       <div>
@@ -65,6 +65,7 @@ export const PostList = ({ setToken, token }) => {
                         </div>
                       ))}
                       </div>
+                      <div>Location: {post.court ? post.court.title : "N/A"}</div>
                     </div>
                   </div>
                 </div>

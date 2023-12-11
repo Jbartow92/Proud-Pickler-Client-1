@@ -1,0 +1,129 @@
+/* Add the following CSS to your stylesheet */
+
+.pb-card-item {
+    border: 2px solid #3498db; /* Border color for the paddle */
+    border-radius: 10px; /* Rounded corners */
+    padding: 10px;
+    margin: 10px;
+    background-color: #ecf0f1; /* Background color for the paddle */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .pb-post-details {
+    flex: 1;
+  }
+  
+  .pb-post-header {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  
+  .pb-post-title {
+    color: #e74c3c; /* Title color */
+  }
+  
+  .pb-post-date {
+    color: #95a5a6; /* Date color */
+  }
+  
+  .pb-post-content {
+    margin-top: 10px;
+  }
+  
+  .pb-post-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px; /* Rounded corners for the image */
+  }
+  
+  .pb-post-tag-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .pb-category-label {
+    background-color: #2ecc71; /* Category label background color */
+    color: #ffffff; /* Category label text color */
+    padding: 5px 10px;
+    border-radius: 5px; /* Rounded corners for the category label */
+  }
+  
+  .pb-manage-tags-div {
+    margin-top: 10px;
+  }
+  
+  button {
+    background-color: #f39c12; /* Button background color */
+    color: #ffffff; /* Button text color */
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px; /* Rounded corners for the button */
+    cursor: pointer;
+  }
+  
+  /* Add any additional styles based on your design preferences */
+
+  .court-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .center-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .court-list-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .new-court-btn {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 1rem; /* Adjust margin as needed */
+    margin-bottom: 1rem;
+    margin-left: 70%;
+  }
+  
+  .court-card {
+    width: 70vw;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .court-image-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .court-image-container img {
+    width: 100%;
+    max-width: 70%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+  }
+  
+  .card-label {
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .court-card:hover {
+    transform: scale(1.02);
+    transition: transform 0.3s ease-in-out;
+  }

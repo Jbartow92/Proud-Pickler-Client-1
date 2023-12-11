@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import "./pages.css";
-import { getAllPosts, deletePost } from "../services/postServices";
+import "./PickleballPaddle.css";
+import { deletePost, getAllPosts } from "../services/postServices";
 
 export const Profile = ({ setToken, token }) => {
   const [myPosts, setMyPosts] = useState([]);
@@ -60,27 +60,26 @@ export const Profile = ({ setToken, token }) => {
       <div className="content">
         {myPosts && myPosts.length ? (
           myPosts.map((post) => (
-            <div className="card-item" key={post.id}>
-              <div className="card-header">
-                <div className="post-title">{post.title}</div>
-                <div className="post-date">
+            <div className="pb-card-item" key={post.id}>
+              <div className="pb-post-header">
+                <div className="pb-post-title">{post.title}</div>
+                <div className="pb-post-date">
                   Publication Date: {post.publication_date}
                 </div>
               </div>
-              <div className="card-body">
-                <img className="post-image" src={post.image_url} alt={post.title} width="400px" />
-                <div>{post.content}</div>
+              <div className="pb-post-details">
+                <img
+                  className="pb-post-image"
+                  src={post.image_url}
+                  alt={post.title}
+                  width="400px"
+                />
+                <div className="pb-post-content">{post.content}</div>
               </div>
-              <div className="card-footer">
-                <h4 className="post-author">
-                  Author: {post.pickle_user.user.username}
-                </h4>
-                <h4 className="post-reactions">
-                  Reaction Count: {post.categories.length}
-                </h4>
+              <div className="pb-post-footer">
                 <div className="comment-buttons">
                   <button
-                    className="delete-button"
+                    className="pb-manage-tags"
                     onClick={() => handleDeleteClick(post)}
                   >
                     Delete Post

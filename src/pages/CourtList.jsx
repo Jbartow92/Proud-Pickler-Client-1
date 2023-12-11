@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./pages.css";
+import "./PickleballPaddle.css";
 import { getCourts } from "../services/courtService";
 import { useNavigate } from "react-router-dom";
 
@@ -18,37 +18,40 @@ export const CourtList = ({ setToken, token }) => {
     getAndSetCategories();
   }, []);
 
- 
-
-
   return (
-    <>
-      <div className="page-title">Courts</div>
-      <button className="new-btn-div" onClick={() => navigate("/courts/create-court")}>
+    <div className="court-list">
+      <div className="court-list-title">Courts</div>
+      <button className="new-court-btn" onClick={() => navigate("/courts/create-court")}>
         ADD NEW COURT
       </button>
-        {courts && courts.length ? (
-          courts
-            .slice() // Create a copy of the array to avoid modifying the original
-            .sort((a, b) => a.title.localeCompare(b.title)) // Sort alphabetically
+      {courts && courts.length ? (
+        <div className="center-container">
+          {courts
+            .slice()
+            .sort((a, b) => a.title.localeCompare(b.title))
             .map((court) => (
-              <div className="card-item" key={court.id}>
+              <div className="court-card" key={court.id}>
                 <div className="card-label">{court.title}</div>
-                <div className="card-label">{court.court_image_url}</div>
+                <div className="court-image-container">
+                  {court.court_image_url && (
+                    <img src={court.court_image_url} alt={`Image for court ${court.id}`} />
+                  )}
+                </div>
                 <div className="card-label">{court.city}</div>
                 <div className="card-label">{court.state}</div>
                 <div className="card-label">{court.number_of_courts}</div>
-                <div className="card-label">{court.open_hours}</div>
+                <div className="card-label">Hours: {court.open_hours}</div>
                 {/* <div className="cat-btn-div">
                   <button onClick={() => handleUpdate(court.id)}>
                     Edit
                   </button>
                 </div> */}
               </div>
-            ))
-        ) : (
-          <p>No courts found.</p>
-        )}
-      </>
+            ))}
+        </div>
+      ) : (
+        <p>No courts found.</p>
+      )}
+    </div>
   );
 };

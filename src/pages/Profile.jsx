@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import "./PickleballPaddle.css";
 import { deletePost, getAllPosts } from "../services/postServices";
 
 export const Profile = ({ setToken, token }) => {
@@ -10,34 +9,39 @@ export const Profile = ({ setToken, token }) => {
     try {
       const postsArray = await getAllPosts();
       const filteredArray = postsArray.filter((post) => post.is_owner === true);
-      const sortedArray = filteredArray.sort((a, b) => {
-        return new Date(b.publication_date) - new Date(a.publication_date);
-      });
+      const sortedArray = filteredArray.sort((a, b) => new Date(b.publication_date) - new Date(a.publication_date));
       setMyPosts(sortedArray);
     } catch (error) {
       console.error("Error fetching posts:", error);
     }
   };
 
-  const handleDeleteClick = (post) => {
-    setPostToDelete(post);
+  const handleDeleteClick = async (post) => {
+    const confirmDelete = window.confirm("Are you sure you want to delete this post?");
+
+    if (confirmDelete) {
+      try {
+        await deletePost(post.id);
+
+        // Update the state immediately after successful deletion
+        setMyPosts((prevPosts) => prevPosts.filter((prevPost) => prevPost.id !== post.id));
+      } catch (error) {
+        console.error("Error deleting post:", error);
+      }
+    }
   };
 
   useEffect(() => {
     if (postToDelete) {
       const handleDeleteConfirmation = async () => {
-        const confirmDelete = window.confirm(
-          "Are you sure you want to delete this post?"
-        );
+        const confirmDelete = window.confirm("Are you sure you want to delete this post?");
 
         if (confirmDelete) {
           try {
             await deletePost(postToDelete.id);
 
             // Update the state immediately after successful deletion
-            setMyPosts((prevPosts) =>
-              prevPosts.filter((post) => post.id !== postToDelete.id)
-            );
+            setMyPosts((prevPosts) => prevPosts.filter((post) => post.id !== postToDelete.id));
           } catch (error) {
             console.error("Error deleting post:", error);
           } finally {
@@ -52,39 +56,32 @@ export const Profile = ({ setToken, token }) => {
 
   useEffect(() => {
     getAndSetMyPosts();
-  }, [postToDelete]); // Fetch posts whenever postToDelete changes
+  }, [postToDelete]);
 
   return (
-    <>
-      <div className="page-title">My Posts</div>
-      <div className="content">
+    <div className="container mx-auto p-4">
+      <h1 className="text-3xl font-bold mb-4">My Posts</h1>
+      <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {myPosts && myPosts.length ? (
           myPosts.map((post) => (
-            <div className="pb-card-item" key={post.id}>
-              <div className="pb-post-header">
-                <div className="pb-post-title">{post.title}</div>
-                <div className="pb-post-date">
-                  Publication Date: {post.publication_date}
-                </div>
+            <div key={post.id} className="bg-white p-4 rounded shadow-md">
+              <div className="text-lg font-semibold mb-2">{post.title}</div>
+              <div className="text-sm text-gray-500 mb-2">
+                Publication Date: {post.publication_date}
               </div>
-              <div className="pb-post-details">
-                <img
-                  className="pb-post-image"
-                  src={post.image_url}
-                  alt={post.title}
-                  width="400px"
-                />
-                <div className="pb-post-content">{post.content}</div>
-              </div>
-              <div className="pb-post-footer">
-                <div className="comment-buttons">
-                  <button
-                    className="pb-manage-tags"
-                    onClick={() => handleDeleteClick(post)}
-                  >
-                    Delete Post
-                  </button>
-                </div>
+              <img
+                className="w-full h-40 object-cover mb-2"
+                src={post.image_url}
+                alt={post.title}
+              />
+              <div className="text-sm text-gray-700">{post.content}</div>
+              <div className="mt-4">
+                <button
+                  className="text-sm text-red-500 hover:underline"
+                  onClick={() => handleDeleteClick(post)}
+                >
+                  Delete Post
+                </button>
               </div>
             </div>
           ))
@@ -92,6 +89,6 @@ export const Profile = ({ setToken, token }) => {
           <p>No posts found.</p>
         )}
       </div>
-    </>
+    </div>
   );
 };

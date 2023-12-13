@@ -9,6 +9,7 @@ import { Profile } from "../pages/Profile";
 import { PostForm } from "../forms/NewPostFrom";
 import { CourtForm } from "../forms/newCourtForm";
 import { EditPostForm } from "../forms/EditPostForm";
+import { PostDetail } from "../pages/PostDetail";
 
 export const ApplicationViews = ({ token, setToken }) => {
   return (
@@ -21,6 +22,10 @@ export const ApplicationViews = ({ token, setToken }) => {
           <Route path="/" element={<Home setToken={setToken} />} />
           <Route path="/posts" element={<PostList token={token} setToken={setToken} />}/>
           <Route path="/posts/create-post" element={<PostForm token={token} setToken={setToken} />}/>
+          <Route
+            path="/posts/:postId"
+            element={<PostDetail token={token} setToken={setToken} />}
+          />
           <Route path="/posts/:postId/edit-post" element={<EditPostForm token={token} setToken={setToken} />}
           />
           <Route path="/courts" element={<CourtList token={token} setToken={setToken} />}/>

@@ -28,37 +28,54 @@ export const Login = ({ setToken }) => {
   }
 
   return (
-    <section className="columns is-centered">
-      <form className="column is-two-thirds" onSubmit={handleLogin}>
-        <h1 className="title">Rare Publishing</h1>
-        <p className="subtitle">Please sign in</p>
+    <section className="flex justify-center items-center h-screen">
+      <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-96" onSubmit={handleLogin}>
+        <h1 className="text-3xl font-bold mb-6">Proud Pickler</h1>
+        <p className="text-lg mb-4">Please sign in</p>
 
-        <div className="field">
-          <label className="label">Username</label>
-          <div className="control">
-            <input className="input" type="text" ref={username} />
-          </div>
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
+            Username
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+            id="username"
+            type="text"
+            ref={username}
+          />
         </div>
 
-        <div className="field">
-          <label className="label">Password</label>
-          <div className="control">
-            <input className="input" type="password" ref={password} />
-          </div>
+        <div className="mb-6">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+            Password
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+            id="password"
+            type="password"
+            ref={password}
+          />
         </div>
 
-        <div className="field is-grouped">
-          <div className="control">
-            <button className="button is-link" type="submit" >Submit</button>
-          </div>
-          <div className="control">
-            <Link to="/register" className="button is-link is-light">Cancel</Link>
-          </div>
+        <div className="flex items-center justify-between">
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="submit"
+          >
+            Sign In
+          </button>
+          <Link
+            to="/register"
+            className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+          >
+            Cancel
+          </Link>
         </div>
-        {
-          isUnsuccessful ? <p className="help is-danger">Username or password not valid</p> : ''
-        }
+
+        {isUnsuccessful && (
+          <p className="mt-4 text-red-500 text-sm">Username or password not valid</p>
+        )}
       </form>
     </section>
-  )
-}
+  );
+};

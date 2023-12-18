@@ -20,3 +20,13 @@ export const createCourt = (court) => {
           body: JSON.stringify(court)
       }).then((res) => res.json())
   }
+
+  export const deleteCourt = (courtId) => {
+    return fetch(`http://localhost:8000/courts/${courtId}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Token ${localStorage.getItem("auth_token")}`,
+        "Content-Type": "application/json",
+      },
+    })
+  };

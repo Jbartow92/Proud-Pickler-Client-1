@@ -70,7 +70,7 @@ export const EditPostForm = () => {
   // Handle form save
   const handleSave = (event) => {
     event.preventDefault();
-
+  
     const updatedItem = {
       id: post.id,
       title: post.title,
@@ -87,12 +87,13 @@ export const EditPostForm = () => {
       },
       categories: post.categories.map((category) => category.id),
     };
-
+  
     // Send updated item to server
     editPost(updatedItem).then(() => {
       navigate(`/posts/${postId}`);
     });
   };
+  
 
   // JSX structure
   return (
@@ -124,7 +125,6 @@ export const EditPostForm = () => {
                 type="text"
                 placeholder=""
                 value={post.image_url}
-                required
                 maxLength={200}
               />
               Max Characters 200

@@ -114,7 +114,6 @@ export const PostForm = () => {
                 type="text"
                 placeholder="https://example.com"
                 value={post.image_url}
-                required
               />
             </div>
             <div className="form-field">
@@ -138,6 +137,7 @@ export const PostForm = () => {
                   name="court"
                   onChange={updateCourt}
                   value={post.court.id}
+                  required
                 >
                   <option value={0}>Please select a Court</option>
                   {courtLabel.map((typeObj) => {

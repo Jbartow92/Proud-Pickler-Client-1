@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getAllPosts } from "../services/postServices";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -25,18 +25,19 @@ export const PostList = ({ setToken, token }) => {
   }, []);
 
   return (
-    <div className="bg-gray-100 min-h-screen p-8">
-      <div className="max-w-3xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8">All Posts</h1>
+    <div className="min-h-screen p-8 bg-gradient-to-b from-teal-500 via-teal-600 to-teal-700">
+      <div className="max-w-3xl mx-auto rounded-lg shadow-lg p-8 bg-teal-300">
+        <h1 className="text-4xl font-bold mb-8 text-black">All Posts</h1>
         <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4"
+          className="font-bold py-2 px-4 rounded mb-4"
+          style={{ backgroundColor: "orange", color: "#000000" }}
           onClick={() => navigate("/posts/create-post")}
         >
           NEW POST
         </button>
         {posts && posts.length ? (
           posts.map((post) => (
-            <div key={post.id} className="bg-white rounded-lg shadow-lg mb-4 p-4 relative">
+            <div key={post.id} className="rounded-lg shadow-lg mb-4 p-4 relative" style={{ backgroundColor: "#B0D96D" }}>
               <Link to={`/posts/${post.id}`} className="no-underline text-black">
                 <div className="pb-post-details">
                   <div className="pb-post-header">
@@ -75,20 +76,10 @@ export const PostList = ({ setToken, token }) => {
                   />
                 </div>
               )}
-              {post?.is_owner && (
-                <div className="pb-manage-tags-div">
-                  <button
-                    onClick={() => navigate(`/posts/${post.id}/edit-post`)}
-                    className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-                  >
-                    Edit
-                  </button>
-                </div>
-              )}
             </div>
           ))
         ) : (
-          <p className="text-xl">No posts found.</p>
+          <p className="text-xl" style={{ color: "#000000" }}>No posts found.</p>
         )}
       </div>
     </div>

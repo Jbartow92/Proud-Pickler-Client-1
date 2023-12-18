@@ -1,3 +1,4 @@
+// PostDetail.jsx
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getCategories } from "../services/categoryService";
@@ -70,24 +71,30 @@ export const PostDetail = () => {
 
   return (
     <>
-      <div className="bg-white p-4 rounded shadow-md">
+      <div style={{ backgroundColor: "#8BBF63" }} className="p-4 rounded shadow-md">
         {post ? (
           <>
             <div key={post.id}>
-              <div className="text-xl font-semibold mb-4">Title: {post.title}</div>
-              <div className="text-sm text-gray-500 mb-4">
+              <div className="text-xl font-semibold mb-4" style={{ color: "#FFFFFF" }}>
+                Title: {post.title}
+              </div>
+              <div className="text-sm text-gray-500 mb-4" style={{ color: "#FFFFFF" }}>
                 Author: {post.pickle_user.user.username}
               </div>
-              <div className="text-base mb-4">Content: {post.content}</div>
+              <div className="text-base mb-4" style={{ color: "#FFFFFF" }}>
+                Content: {post.content}
+              </div>
               <div className="flex items-center">
                 <div className="flex-shrink-0 pb-cat-main"></div>
                 <div className="ml-4">
-                  <div className="text-sm font-semibold mb-2">Categories:</div>
+                  <div className="text-sm font-semibold mb-2" style={{ color: "#FFFFFF" }}>
+                    Categories:
+                  </div>
                   <div className="flex flex-wrap">
                     {post.categories.map((cat) => (
                       <div
                         key={cat.id}
-                        className="mr-2 mb-2 bg-blue-500 text-white py-1 px-2 rounded"
+                        className="mr-2 mb-2 bg-green-500 text-white py-1 px-2 rounded"
                       >
                         {cat.label}
                       </div>
@@ -104,7 +111,8 @@ export const PostDetail = () => {
       {post?.is_owner ? (
         <div className="mt-4">
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded"
+            style={{ backgroundColor: "#4CAF50", color: "#FFFFFF" }}
+            className="py-2 px-4 rounded"
             onClick={handleManageCats}
           >
             Manage Tags
@@ -121,7 +129,7 @@ export const PostDetail = () => {
                   <label className="flex items-center cursor-pointer">
                     <input
                       type="checkbox"
-                      className="form-checkbox text-blue-500"
+                      className="form-checkbox text-green-500"
                       checked={selectedCats.has(cat.id)}
                       onChange={() => handleSelectedTag(cat)}
                     />
@@ -134,13 +142,15 @@ export const PostDetail = () => {
 
         <div className="mt-4 flex justify-between">
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded"
+            style={{ backgroundColor: "#4CAF50", color: "#FFFFFF" }}
+            className="py-2 px-4 rounded"
             onClick={saveNewTags}
           >
             Save Category Selection
           </button>
           <button
-            className="bg-gray-500 hover:bg-gray-700 text-white py-2 px-4 rounded"
+            style={{ backgroundColor: "#95a5a6", color: "#FFFFFF" }}
+            className="py-2 px-4 rounded"
             onClick={handleCloseCats}
           >
             Close
